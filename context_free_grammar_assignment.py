@@ -98,8 +98,6 @@ def recursive_parser(s):
         if (subS.startswith("{") and subS.endswith("}") and check(subS[1:-1])):
             return True
 
-        # --- Check the "concatenation" rule (Backtracking) ---
-
         # Rule: S -> SS
         # We try every possible split of the string into two parts
         for i in range(1, len(subS)):
@@ -228,3 +226,12 @@ if __name__ == "__main__":
     grammarTests()
     test_balanced_parentheses()
 # --- Part C: Experimental Comparison ---
+
+# Short report:
+'''
+- How the recursive parser mirrors the grammar
+The recursive parser uses a helper function to get this done. The helper function will be called recursively to check if the string fits the rules. The check(subs) helper function takes a substring and will do a few checks. First, it will check if the string is empty. Second, it will check if the string starts and ends with matching characters ([], (), {}). If it matches, we recursively call the check() function with the first and last characters sliced. Finally, we check for the 
+- Why the stack algorithm works and is efficient
+
+- Observed differences between the two approaches
+'''
