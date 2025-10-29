@@ -1,6 +1,6 @@
 # Name: Garrett Otto
 # Student ID: W01389350
-# Date: 10/28/2025
+# Date: 10/26/2025
 # --- Task 1: Regular Grammar Validator ---
 def is_regular_grammar(productions):
     """
@@ -230,8 +230,17 @@ if __name__ == "__main__":
 # Short report:
 '''
 - How the recursive parser mirrors the grammar
-The recursive parser uses a helper function to get this done. The helper function will be called recursively to check if the string fits the rules. The check(subs) helper function takes a substring and will do a few checks. First, it will check if the string is empty. Second, it will check if the string starts and ends with matching characters ([], (), {}). If it matches, we recursively call the check() function with the first and last characters sliced. Finally, we check for the 
+The recursive parser uses a check(subs) helper function to get this done. This helper function is called recursively to check if the string fits the rules.
+The check(subs) function takes a substring and will do a few checks:
+- First, it will check if the string is empty.
+- Second, it will check if the string starts and ends with matching characters ([], (), {}). If it matches, we recursively call the check() function on the substring with the first and last characters sliced.
+- Finally, if the other checks fail, we jump into a for loop to check every possible split of the string. We then recursively call the check() function for both sides of the split and check if they both return true.
+This mirrors the grammar because we are checking for all cases of the grammar rules.
+
 - Why the stack algorithm works and is efficient
+The stack algorithm works by putting all the beginning/opening symbols onto a stack. When we encounter a closing symbol, we check if the top of the stack matches the closing symbol. If it matches, we pop the top of the stack and continue through the string until the stack is empty.
+This is efficient because we only go through the string once
 
 - Observed differences between the two approaches
+Between the two approaches, the stack algorithm is more efficient. This is because the recursive parser can end up checking the same substrings multiple times due to recursively calling the function and backtracking.
 '''
